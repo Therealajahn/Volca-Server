@@ -12,6 +12,6 @@ db.once('open', () => {
         name: String
     });
 
-    module.exports = mongoose.model('database', Sequences);
+    module.exports = mongoose.model('Database', Sequences);
 
 
