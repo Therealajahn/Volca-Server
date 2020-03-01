@@ -58,8 +58,7 @@ router.route('/database/:database_id')
           })
       })
       .put((req,res) => {
-        Database.findById(req.params.database_id, (err, database) =>{
-          console.log(req.name);  
+        Database.findById(req.params.database_id, (err, database) =>{ 
           if(err){
                 res.send(err)
             }
