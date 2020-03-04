@@ -17,7 +17,7 @@ router.use((req,res,next) => {
 
 //test router
 router.get('/', (req,res) => {
-    res.json({ message: "Sometimes we don't know how it be, but it do. -Bigideas"});
+    res.json({ sequence: ['a1','a2', 'a3', 'a4']});
 });
 
 
