@@ -17,7 +17,7 @@ router.use((req,res,next) => {
 
 //test router
 router.get('/', (req,res) => {
-    res.json({ sequence: ['a1','a2', 'a3', 'a4']});
+    res.json({ sequence: ['b1','b2', 'b3', 'b4']});
 });
 
 
@@ -27,13 +27,17 @@ router.route('/database')
     .post((req,res) => {
     
     const newDatabase = new Database();
+    console.log(req);
     newDatabase.name = req.body.name;
+    newDatabase.sequence = req.body.sequence;
 
         newDatabase.save((err) => {
             if(err){
                 res.send(err);
             }
-            res.send({message: `Database created.`});
+            res.send({
+                data: req.body
+            });
         })
     })
     //get all databases
@@ -44,6 +48,14 @@ router.route('/database')
             }
             res.json(sequences);
         })
+    })
+    .delete((req,res) => {
+       Database.remove((err) => {
+          if(err){ 
+            res.send(err);
+          }
+          res.send({message: "All data gone"});
+        });  
     })
     
 //access one database
@@ -63,6 +75,7 @@ router.route('/database/:database_id')
                 res.send(err)
             }
             database.name = req.body.name;
+            database.sequence = req.body.sequence;
             database.save((err) => {
                 if (err){
                     res.send(err);

@@ -9,7 +9,8 @@ db.once('open', () => {
 
 //shape my database
     const Sequences = new mongoose.Schema({
-        name: String
+        name: String,
+        sequence: []
     });
 
     module.exports = mongoose.model('Database', Sequences);
